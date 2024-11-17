@@ -2,7 +2,7 @@ import openai
 from dotenv import load_dotenv
 import os
 import streamlit as st
-from constants import GPT_MODEL 
+from constants import GPT_MODEL,SYSTEM_MESSAGE
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -17,11 +17,7 @@ def solve_algebra_problem(prompt):
             messages=[
                 {
                     "role": "system",
-                    "content": (
-                        "You are a highly specialized algebra tutor. Your task is to solve only algebra-related problems, such as equations, expressions, and related mathematical queries. "
-                        "If the question is not algebra-related, politely respond with: 'I can only assist with algebra-related problems. Please ask an algebra question.' "
-                        "Provide detailed step-by-step explanations for algebra problems."
-                    )
+                    "content": SYSTEM_MESSAGE
                 },
                 {"role": "user", "content": prompt}
             ],
