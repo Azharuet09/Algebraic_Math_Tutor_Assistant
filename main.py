@@ -2,17 +2,18 @@ import openai
 from dotenv import load_dotenv
 import os
 import streamlit as st
+from constants import GPT_MODEL 
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def solve_algebra_problem(prompt):
     """
-    Function to solve algebra-related problems using OpenAI GPT-4.
+    Function to solve algebra-related problems using Prompt Engineering.
     """
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4o",
+            model=GPT_MODEL,
             messages=[
                 {
                     "role": "system",
